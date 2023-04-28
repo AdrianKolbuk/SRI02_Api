@@ -34,7 +34,6 @@ namespace SRI02_Api.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-
             var product = _db.Products.FirstOrDefault(x => x.Id == id);
             if (product != null)
             {
@@ -104,7 +103,9 @@ namespace SRI02_Api.Controllers
                 Ean = productDto.Ean,
                 Price = productDto.Price,
                 Description = productDto.Description,
-                IsAvailable = productDto.IsAvailable
+                IsAvailable = productDto.IsAvailable,
+                ProducentId = productDto.ProducentId,
+                Producent = productDto.Producent
             };
 
             return product;
@@ -120,7 +121,9 @@ namespace SRI02_Api.Controllers
                 Ean = product.Ean,
                 Price = product.Price,
                 Description = product.Description,
-                IsAvailable = product.IsAvailable
+                IsAvailable = product.IsAvailable,
+                ProducentId = product.ProducentId,
+                Producent = product.Producent
             };
 
             return dto;
