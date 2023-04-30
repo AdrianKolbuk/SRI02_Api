@@ -23,6 +23,27 @@ namespace SRI02_Api.Models
                 .HasOne<Producent>(s => s.Producent)
                 .WithMany(g => g.Products)
                 .HasForeignKey(s => s.ProducentId);
+
+            modelBuilder.Entity<Producent>()
+                .HasMany<Product>(s => s.Products);
+
+            modelBuilder.Entity<Product>()
+                .Property(s => s.Price).HasDefaultValue(0);
+
+            modelBuilder.Entity<Product>()
+                .Property(s => s.Code).HasMaxLength(128);
+
+            modelBuilder.Entity<Product>()
+                .Property(s => s.Name).HasMaxLength(256);
+
+            modelBuilder.Entity<Product>()
+                .Property(s => s.Description).HasMaxLength(256);
+
+            modelBuilder.Entity<Producent>()
+                .Property(s => s.Name).HasMaxLength(256);
+
+            modelBuilder.Entity<Producent>()
+                .Property(s => s.NIP).HasMaxLength(15);
         }
 
         public DbSet<Product> Products { get; set; } = null!;
